@@ -3,19 +3,19 @@
 </ion-header-bar>  
 
 <ion-content>
+	<p ng-hide="isShow" ng-bind="error"></p>
 <div class="list">
   <label class="item item-input">
-    <span class="input-label">用户名</span>
-    <input type="text">
+    <span class="input-label" >用户名</span>
+    <input type="text" ng-model="user.username">
   </label>
   <label class="item item-input">
     <span class="input-label">密码</span>
-    <input type="password">
+    <input type="password" ng-model="user.password">
   </label>
 </div>
-<a href="#/app/home">首页</a>
 <button class="button button-block button-positive"
-	ng-click="goHome()">
+	ng-click="login()">
   登录
 </button>
 </ion-content>
@@ -23,5 +23,8 @@
 	.list {
     padding-top: 150px;
   }
-	
+	p{
+		color:#990000;
+		text-align: center;
+	}
 </style>
