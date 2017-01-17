@@ -31,11 +31,12 @@ angular.module('starter', ['ionic', 'starter.controllers'])
       }
     })
     .state('app.home', {
-      url: '/home',
+//    url: '/home/:param',
+ 			url: '/home',
       views: {
         'menuContent': {
           templateUrl: 'view/home.html',
-          controller: 'AppCtrl'
+          controller: 'HomeCtrl'
         }
       }
     })

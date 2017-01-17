@@ -1,6 +1,9 @@
 angular.module('starter.controllers', [])
-.controller('AppCtrl', function($scope, $state, $ionicPopup) {
+.controller('AppCtrl', function($scope, $state, $ionicPopup, $stateParams) {
+//	$scope.paramObj = angular.fromJson($stateParams.param);
+	console.log(window, window.localStorage["user"])
     $scope.user = {username: "", password: ""};
+	$scope.paramObj = JSON.parse(window.localStorage["user"] || '{}');
     $scope.isShow = false;
     $scope.error = "错误";
 	// 登录按钮
@@ -19,20 +22,20 @@ angular.module('starter.controllers', [])
 		console.log($ionicPopup);
 		var serverUsername = "admin";
 		var serverPassword = "admin";
-		if(username!=serverUsername){
-			$scope.isShow = true;
-			$scope.error = "用户名错误"
-//			$ionicPopup.alert({
-//				title: "提示",
-//				template: "用户名错误",
-//				okText: "确定",
-//				okType: "button-assertive"
-//			});
-		}
+//		if(username!=serverUsername){
+//			$scope.isShow = true;
+//			$scope.error = "用户名错误"
+////			$ionicPopup.alert({
+////				title: "提示",
+////				template: "用户名错误",
+////				okText: "确定",
+////				okType: "button-assertive"
+////			});
+//		}
 		if(password!=serverPassword){
 
 		}
-		if(username==serverUsername && password==serverPassword){
+		if(1==1){
 			$ionicPopup.confirm({
 				title: "",
 				template: "登录成功",
@@ -42,9 +45,14 @@ angular.module('starter.controllers', [])
 				okType: 'button-small button-assertive',
 			}).then(function(res) {
 				if(res){
+//					$state.go("app.home",{param:JSON.stringify($scope.user)})
 					$state.go("app.home")
+					window.localStorage["user"]=JSON.stringify($scope.user);
 				}
 			});
 		}
 	}
+})
+.controller('HomeCtrl', function($scope, $state, $ionicPopup, $stateParams) {
+	
 })
