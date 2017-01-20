@@ -40,6 +40,24 @@ angular.module('starter', ['ionic', 'starter.controllers'])
         }
       }
     })
+    .state('app.demo', {
+	 			url: '/demo',
+        views: {
+          'menuContent': {
+            templateUrl: 'view/demo.html',
+            controller: 'DemoCtrl'
+          }
+        }
+    })
+    .state('app.demo2', {
+        url: '/demo2',
+        views: {
+          'menuContent': {
+            templateUrl: 'view/demo2.html',
+            controller: 'DemoCtrl'
+          }
+        }
+    });
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/app/login');
 });

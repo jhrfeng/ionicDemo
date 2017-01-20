@@ -1,16 +1,37 @@
 <ion-header-bar class="bar bar-header bar-assertive">
   <h1 class="title">首页</h1>
 </ion-header-bar>  
-
 <ion-content>
-    显示传递参数
-    用户名：{{paramObj.username}}
-  密码：{{paramObj.password}}
- 
+	<ion-refresher pulling-text="下拉刷新" on-refresh="doRefresh()"></ion-refresher>
+
+	<div class="list">
+	  <div class="item item-input-inset">
+	    <label class="item-input-wrapper">
+	      <input type="text" ng-model="vo.searchtxt" placeholder="请输入你要搜索的内容">
+	    </label>
+	    <button ng-click="queryEnglish()" class="button button-small button-positive">
+	      	查询
+	    </button>
+	  </div>
+	</div>
+	    <br>    <br>    <br>    <br>
+<div class="list">
+  <div class="item item-divider">
+    	英文字母表
+  </div>
+  <a class="item" ng-repeat="obj in list" href="#">
+    {{obj}}
+  </a>
+</div>
+
+<ion-infinite-scroll ng-if="vo.moredata" on-infinite="loadMore()" distance="20%" ></ion-infinite-scroll>
+  
 </ion-content>
 <style>
 	.list {
-    padding-top: 150px;
+    padding-top: 10px;
+    background: #ddd;
+    color: #db5555;
   }
 	
 </style>
