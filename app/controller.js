@@ -1,10 +1,65 @@
 angular.module('starter.controllers', [])
-.controller('DemoCtrl', function($rootScope, $scope) {
+.controller('DemoCtrl', function($rootScope, $scope, $http) {
 	$scope.cardHeight = window.screen.availHeight-100;
 	$scope.videoMargin = $scope.cardHeight*0.7 - 50-50;
+	$scope.icon  = 'pause';
+	$scope.vo = {volume:20, audioDuration:0, mp3Name:"loy.mp3"};
+	// 初始化监听第一个mp3资源的时长
+	var audio = new Audio($scope.vo.mp3Name);
+	audio.onloadedmetadata = function() {
+		var min = (audio.duration/60) ^ 0;
+		var sec = (audio.duration%60) ^ 0;
+
+		var time = min+":"+sec;
+		console.log(min, sec ,time)
+	
+		$scope.vo.audioDuration = time;
+	};
+
+	function canplay(){
+		console.log(document.getElementById('demo').currentTime);
+	}
+
+	document.getElementById('demo').ondurationchange=function(){
+		console.log(document.getElementById('demo').currentTime)
+	};
+	// 监听秒速
+	document.getElementById('demo').addEventListener("canplay",function() { 
+		console.log(document.getElementById('demo').currentTime)
+		// myVid.currentTime = 5;
+	});
+
+
+
+
+
+	// $scope.volume = 20;
 	$scope.selectedCss = function(val){
 		$scope.clicked = val;
 	}
+	// 播放 暂停的功能
+	$scope.playMp3 = function(){
+		//$scope.vo.audioDuration = obj.duration;
+		if($scope.icon=='pause'){
+			document.getElementById('demo').play();
+			$scope.icon = 'play';
+			//console.log(document.getElementById('demo').currentTime)
+		}else{
+			document.getElementById('demo').pause();
+			$scope.icon = 'pause';
+		}
+		
+	}
+	// 坚挺音量事件
+	$scope.$watch('vo.volume', function(newValue, oldValue){
+		document.getElementById('demo').volume = newValue/100;
+	})
+
+	// volume.$observe('volume', function(newValue) {
+	//   if (modelCtrl.$name !== newValue) {
+	//     modelCtrl.$$parentForm.$$renameControl(modelCtrl, newValue);
+	//   }
+	// });
 
 
 

@@ -1,0 +1,91 @@
+<ion-header-bar class="bar bar-header bar-assertive">
+  <h1 class="title">登录</h1>
+</ion-header-bar>  
+<ion-content>
+	<div class="list card">
+	  <div class="item item-image">
+	  	<div class="row imgb">
+		  <div class="col"><i class="ion-skip-backward"></i></div>
+		  <div class="col"><i class="ion-play"></i></div>
+		  <div class="col"><i class="ion-skip-forward"></i></div>
+		</div>
+	    <img src="timg.jpg"  style="height:250px;width:100%;">
+	    <div class="item range rangs">
+	      11.11
+		  <input type="range" name="volume">
+		  20.11
+		</div>
+	  </div>
+	  <a class="item item-icon-left assertive" href="#">
+	   		I LOVE YOU
+	  </a>
+	  <a class="item" href="#">
+	 	<div class="row">
+		  <div class="col" style="text-align:left;"><i class="ion-ios-shuffle-strong"></i></div>
+		  <div class="col"><i class="ion-skip-backward"></i></div>
+		  <div class="col"><i class="ion-play"></i></div>
+		  <div class="col"><i class="ion-skip-forward"></i></div>
+		  <div class="col" style="text-align:right;"><i class="ion-android-sync"></i></div>
+		</div>
+	  </a>
+	</div>
+</ion-content>
+<!-- 底部 -->
+<ion-footer-bar class="bar-dark">
+  <div class="row">
+	  <div class="col" 
+	  	ng-click="selectedCss('ablum')"
+	  	ng-class="clicked=='ablum'?'actived':''">
+	  		<i class="ion-folder"></i><br>Ablum
+	  </div>
+	  <div class="col" 
+	  	ng-click="selectedCss('song')"
+	  	ng-class="clicked=='song'?'actived':''">
+	  		<i class="ion-stats-bars"></i><br>Song
+	  </div>
+	  <div class="col"
+	  	ng-click="selectedCss('artis')"
+	  	ng-class="clicked=='artis'?'actived':''">
+	  		<i class="ion-person-stalker"></i><br>Artis
+	  </div>
+	  <div class="col"
+	  	ng-click="selectedCss('foverite')"
+	  	ng-class="clicked=='foverite'?'actived':''">
+	  		<i class="ion-star"></i><br>Foverite
+	  </div>
+	</div>
+</ion-footer-bar>
+<style>
+	.rangs{
+		margin-top: -20px;
+		background-color: rgba(51,51,51,0.7);
+	}
+	.imgb{
+		color: #9E9E9E;
+    	background-color: rgba(51, 51, 51, 0.7);
+	}
+	.bar-footer {
+		height: 64px;
+	}
+	.item .row .col{
+		padding: 2px 15px;
+	}
+	.assertive, a.assertive {
+	    color: #fff;
+	    background-color: #db5555;
+	    text-align: center;
+	    font-size: 0.8rem;
+	}
+	.col{
+		text-align: center;
+	}
+	.col:active{
+		color:#db5555;
+	}
+	.actived{
+		color:#db5555;
+	}
+	.col i{
+		font-size: 1.4rem;
+	}
+</style>
